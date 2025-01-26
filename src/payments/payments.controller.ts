@@ -10,7 +10,7 @@ export class PaymentsController {
 
   @Post('create-payment-session')
   createPaymentSession(@Body() paymentSessionDTO: PaymentSessionDTO) {
-    return this.payment.send('createPaymentSession', paymentSessionDTO)
+    return this.payment.send('create.payment.session', paymentSessionDTO)
       .pipe(
         catchError(error => {
           throw new RpcException(error)
@@ -20,7 +20,6 @@ export class PaymentsController {
 
   @Get('success')
   success() {
-    console.log('log')
     return this.payment.send('success', {})
       .pipe(
         catchError(error => {
